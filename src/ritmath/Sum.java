@@ -1,5 +1,7 @@
 package ritmath;
 
+import java.util.Iterator;
+
 public class Sum extends AbstractFunction{
     public Sum(MathFunction... terms){
         super(terms);
@@ -11,9 +13,9 @@ public class Sum extends AbstractFunction{
         if (numChildren() == 1){
             return get(0).toString();
         }
-        for (int i = 0; i < numChildren(); ++i) {
-            str += get(i).toString();
-            if (i < (numChildren() - 1)){
+        for (MathFunction child : (Iterable<MathFunction>) this) {
+            str += child.toString();
+            if (iterator().hasNext()){
                 str += " + ";
             }
         }
@@ -23,8 +25,8 @@ public class Sum extends AbstractFunction{
     @Override
     public double evaluate(double x) {
         double total = 0;
-        for (int i = 0; i < numChildren(); ++i) {
-            total += get(i).evaluate(x);
+        for (MathFunction child : (Iterable<MathFunction>) this) {
+            total += child.evaluate(x);
         }
         return total;
     }

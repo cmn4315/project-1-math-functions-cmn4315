@@ -2,8 +2,9 @@ package ritmath;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
-public abstract class AbstractFunction implements MathFunction{
+public abstract class AbstractFunction implements MathFunction, Iterable{
     private ArrayList<MathFunction> children;
 
     protected AbstractFunction(MathFunction... children){
@@ -34,5 +35,9 @@ public abstract class AbstractFunction implements MathFunction{
 
     protected void setChildren(MathFunction[] children){
         this.children = new ArrayList<>(Arrays.asList(children));
+    }
+
+    public Iterator<MathFunction> iterator(){
+        return children.iterator();
     }
 }
