@@ -13,9 +13,9 @@ public class Sum extends AbstractFunction{
         if (numChildren() == 1){
             return get(0).toString();
         }
-        for (MathFunction child : (Iterable<MathFunction>) this) {
-            str += child.toString();
-            if (iterator().hasNext()){
+        for (int i = 0; i < numChildren(); ++i) {
+            str += get(i).toString();
+            if (i < (numChildren() - 1)){
                 str += " + ";
             }
         }
