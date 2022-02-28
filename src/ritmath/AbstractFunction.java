@@ -40,4 +40,8 @@ public abstract class AbstractFunction implements MathFunction, Iterable{
     public Iterator<MathFunction> iterator(){
         return children.iterator();
     }
+
+    public double integral(double a, double b, int n){
+        return 0.0;
+    }
 }

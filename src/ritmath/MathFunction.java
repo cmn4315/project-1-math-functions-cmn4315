@@ -6,4 +6,6 @@ public interface MathFunction {
     public MathFunction derivative();
 
     public boolean isConstant();
+
+    public double integral(double a, double b, int n);
 }
